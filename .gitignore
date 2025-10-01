@@ -4,5 +4,8 @@
 *.out
 *.snm
 *.toc
-
+*.vrb
+*.fls
+*.fdb_latexmk
+*.synctex.gz
 *.pdf   # would have on the repo ?
