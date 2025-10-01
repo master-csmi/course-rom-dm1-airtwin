@@ -26,11 +26,25 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt
 
-    - name: Run Jupyter notebook
+    - name: Run all Python scripts
       run: |
-          jupyter nbconvert --to notebook --execute simulate.ipynb --output simulate-executed.ipynb
-
-
+          for f in *.py; do
+            if [ -f "$f" ]; then
+              echo "Running $f ..."
+              python "$f"
+            fi
+          done
+          
+    - name: Run all Jupyter notebooks
+      run: |
+          for f in *.ipynb; do
+            if [ -f "$f" ]; then
+              echo "Executing $f ..."
+              jupyter nbconvert --to notebook --execute "$f" --output "${f%.ipynb}-executed.ipynb"
+            fi
+          done
+      env:
+          MPLBACKEND: Agg   
 
     - name: Compile latex slides
       run: pdflatex slides.tex
