@@ -1,0 +1,20 @@
+name: Build Slides
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+  workflow_dispatch:
+
+jobs:
+  build:
+    name: Build
+    runs-on: self-texlive
+
+    steps:
+     - uses: actions/checkout@v4
+
+      - name: Compile latex slides
+        run: pdflatex slides.tex
