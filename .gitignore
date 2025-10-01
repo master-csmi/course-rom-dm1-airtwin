@@ -1,0 +1,8 @@
+*.aux
+*.log
+*.nav
+*.out
+*.snm
+*.toc
+
+*.pdf   # would have on the repo ?
