@@ -24,12 +24,27 @@ jobs:
     - name: Install dependencies
       run: |
           python -m pip install --upgrade pip
-          pip install -r requirements.txt || true
+          pip install -r requirements.txt
 
-    - name: Run simulation script
-      run: python simulate.py
-
-
+    - name: Run all Python scripts
+      run: |
+          for f in *.py; do
+            if [ -f "$f" ]; then
+              echo "Running $f ..."
+              python "$f"
+            fi
+          done
+          
+    - name: Run all Jupyter notebooks
+      run: |
+          for f in *.ipynb; do
+            if [ -f "$f" ]; then
+              echo "Executing $f ..."
+              jupyter nbconvert --to notebook --execute "$f" --output "${f%.ipynb}-executed.ipynb"
+            fi
+          done
+      env:
+          MPLBACKEND: Agg   
 
     - name: Compile latex slides
       run: pdflatex slides.tex
