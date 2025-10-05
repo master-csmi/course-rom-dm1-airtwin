@@ -6,7 +6,7 @@
 % \usepackage{hyperref}
 
 
-\author[Jumeau numérique: Environnement]{\large Hanna CHETOUANE, Narmimane Zaouache \\ \vspace{-0.8cm} \date{\today}}
+\author[Jumeau numérique: Environnement]{\large Hanna CHETOUANE, Narmimane ZAOUACHE \\ \vspace{-0.8cm} \date{\today}}
 \title[Microclimat urbain]{\textbf{Jumeau numérique dans l'environnement:} \\ Microclimat urbain}
 
 
@@ -19,8 +19,7 @@
     \begin{center}
         UFR of Mathematics and Informatics - University of Strasbourg 
         \\[0.2cm] 
-        \textit{Problématique: A quoi sert un jumeau numérique/ comment réduire les îlots de chaleur urbains, prévisions, surveillance, améliorer \\
-        Comment la végétation, la géométrie et les matériaux urbains influencent-ils sur le micro-climat urbain ?} % quoi choisir comme problématique ?
+        \textit{Comment les jumeaux numériques aident-ils à comprendre les effets des aménagements urbains sur le micro-climat ?}
     \end{center}
 \end{frame} 
 
@@ -30,34 +29,33 @@
 \end{frame}
 
 
-\begin{frame}{Qu'est-ce qu'un jumeau numérique ?}
-    \rightarrow réplique virtuelle et dynamoque d'un système physique % ou autre ?
-    \rightarrow Données qui servent à modéliser des phénomènes, simuler des scénarios et ainsi prédire et optimiser un système réel 
-    \textbf{Objectifs en lien avec notre problématique:}
-    \begin{itemize}
-        \item Suivre l'évolution du microclimat urbain % Surveillance
-        \item Ajuster le modèle avec des données réelles en continue % callibration
-        \item Tester des scénarios d'aménagement urbain (stratégie de végétalisation, matériaux, géométrie) % optimisation
-        \item Anticiper les changements climatiques et leurs impacts (pollution, chaleur) % prédiction
+\begin{frame}{Contexte}
+    \small
+    \begin{itemize} % plus développer ?
+        \item L'écologie et le climat sont devenus des enjeux majeurs, surtout dans les villes où se développent des îlots de chaleur
+        \item Solutions: Végétalisation, choix de matériaux adaptés et aménagements urbains repensés
+        \item Les collectiviités locales doivent ainsi prendre des décisions sur les stratégies d'aménagement à adopter et en évaluer l'impact environnemental et sanitaire
     \end{itemize}
-    Défi actuel: projet JNFT en France avec IGN, Cerema, Inria
+    $\rightarrow$ Simuler et prédire ces effets de ces choix sur le microclimat urbain et la santé publique $\Rightarrow $ \textbf{Jumeau numérique}
 \end{frame}
 
 
-\begin{frame}{Problématique et contexte} % ou juste contexte ?
-    %besoin métieur/scientifique
-    Comprendre les interactions entre les facteurs urbains et le microclimat
-    \rightarrow
-    optimiser les aménagements urbains pour réduire les îlots de chaleur urbains
-    aide aux décisions de nouvelles infrastructures, végétation, matériaux
-    % périmètre fonctionnel + KPI ciblés
-    Modélisation d'une zone urbaine localisée
-    Données météorologiques (température, humidité, vent), données urbaines (batiments, végétation, matériaux) % diagramme
+\begin{frame}{Qu'est-ce qu'un jumeau numérique ?}
+    \small
+    \begin{itemize}
+        \item Réplique virtuelle et dynamique d'un système réel, qui, couplé à des outils de simulation, permet d'analyser et prédire son comportement dans différentes conditions
+        \item S'appuie sur des données réelles (météorologiques et urbaines) issues de capteurs, d'observations ou de modèles physiques
+    \end{itemize}
+    \begin{center}
+        \includegraphics[width=0.7\textwidth]{images/objectifs_jm.png} \\
+    \end{center}
+    Défi actuel en France: projet JNFT porté par l'IGN, le Cerema et l'Inria, qui vise à créer un jumeau numérique multithématique couvrant le territoire français
 \end{frame}
 
 
-\begin{frame}{Architecture et pipeline}
-    % shéma
+\begin{frame}{Fonctionnement d'un jumeau numérique} %Architecture et pipeline}
+    \hspace*{-0.5cm}
+    \includegraphics[width=1.1\textwidth]{images/pipeline.png} \\
 \end{frame}
 
 
@@ -87,10 +85,11 @@
 
 
 \begin{frame}{Bibliographie}
-    https://www.ign.fr/institut/un-jumeau-numerique-de-la-france-pour-piloter-la-transition-ecologique
-    https://cnig.gouv.fr/IMG/pdf/2025.01_20_jnft_presentation_cnig_pole_territoires.pdf
+    % https://www.ign.fr/institut/un-jumeau-numerique-de-la-france-pour-piloter-la-transition-ecologique
+    % https://cnig.gouv.fr/IMG/pdf/2025.01_20_jnft_presentation_cnig_pole_territoires.pdf
     % Fondateurs de la démarche: IGN, Cerema, Inria
     % slide 10 -> 30% pour les aménagements durables
+    % https://www.sciencedirect.com/science/article/pii/S2212095525002469
 \end{frame}
 
 
