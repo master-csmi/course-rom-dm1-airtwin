@@ -60,7 +60,42 @@
 
 
 \begin{frame}{Méthodes}
-    
+    %Modélisation de phénomènes physiques
+    \textbf{Physique $\rightarrow$ numérique:}  \\
+    Données (météo, propriétés des matériaux, composition de l'air) $\rightarrow$ paramètres \hspace{1cm}  Zone d'étude $\rightarrow$ Maquette 3D maillée % pour résoudre numériquement par FEM, VM, DM
+    \textbf{Modèles physiques:}
+    \begin{itemize}
+        \item Phénomènes physiques continus (exemple): PDEs (Navier-Stockes, chaleur, transport, diffusion)
+        \item Interaction entre batiments, vent, végétation: Fluid-Structure Interaction (NS + Elasticity)
+        \item Ecoulement d'air et échanges thermiques: Computational Fluid Dynamics (NS + Heat; Transport; transfert radiatif) % effet du soleil sur les façades
+    \end{itemize}
+
+    % résolution très lourde et longue à calculer, donc:
+    \textbf{Utilisation ROM:} Réduction de l'ordre des modèles physiques pour accélérer les simulations 
+    \textbf{Offline:} Préparation du modèle
+    \begin{itemize}
+        \item Réduction de la dimension en capturant l'essentiel du système: Proper Orthogonal Decomposition (POD), Reduced Basis Method (RBM)
+        \item Hyper-réduction: Réduit temps de calcul des termes non-linéaires (DEIM, gappy POD) % en évaluant seulement certains points clés du modèle
+                                                        % DEIM: Discrete Empirical Interpolation Method; gappy POD: gappy Proper Orthogonal Decomposition
+    \end{itemize}
+    \textbf{Online:} Simulation du modèle réduit pour tester différents scénarios rapidement
+
+    \textbf{Data-Driven Models:} basé sur les données, prédiction rapide % sur le micro-climat
+    \begin{itemize}
+        \item Régression: prédit des phénomènes (température, qualité de l'air, vent) à partir de variables (matériaux, végétation...) 
+        \item Gaussian Process: prédit et donne l'incertitude pour des zones avec peu de données
+        \item Réseaux de Neuronnes: capture les relations complexes et non-linéaires entre les variables 
+        \item Modèles d'ensembles: amélioration de la précision et de la robustesse des prédictions, en combinant plusieurs modèles
+    \end{itemize}
+
+    \textbf{Data assimilation:} Combinaison des modèles physiques et des données pour corriger les simulations, obtenir un maximum de précision et rendre ces simulations exploitables % pour la prise de décision
+    \begin{itemize}
+        \item VAR: ajuste le modèle physique pour que les simulations collent aux observations (sur un ou plusieurs pas de temps)
+        \item Filtre de Kalman: Mise à jour des prédictions en temps réel pour un suivi dynamique
+        \item PBDW, GEIM: reconstruction du système avec peu de données, pour une vue d'ensemble
+        \item Capteurs virtuels: estimation de variables où il n'y a pas de mesures, voir l'effet de nouveaux aménagements
+    \end{itemize}
+
 \end{frame}
 
 
