@@ -157,7 +157,7 @@
     \end{itemize}
 \end{frame}
 
-\begin{frame}{Architecture & Pipeline - }
+\begin{frame}{Architecture and Pipeline}
 \begin{columns}
     \begin{column}{0.55\textwidth}
         \includegraphics[width=\linewidth]{images/architecture_of_digital_twin.png}
@@ -173,6 +173,180 @@
 \end{frame}
 
 
+
+\begin{frame}{Methods – Part 1: Physical and Reduced Models}
+\small
+\begin{block}{1. Physical and Numerical Modeling}
+\begin{itemize}
+    \item Based on fundamental equations (CFD, thermal transfer, radiation).
+    \item Represents airflow, heat diffusion, and the effect of urban materials.
+    \item Provides detailed simulations but is computationally expensive.
+\end{itemize}
+\end{block}
+
+\begin{block}{2. Reduced Order Model (ROM / Surrogate Model)}
+\begin{itemize}
+    \item Built from the results of the high-fidelity physical model.
+    \item Techniques: POD (Proper Orthogonal Decomposition), Reduced Basis Method (RBM), Hyper-reduction (DEIM).
+    \item Enables calculations 100 to 1000 times faster while preserving accuracy.
+\end{itemize}
+\end{block}
+\end{frame}
+
+
+\begin{frame}{Methods – Part 2: Data-driven and Data Assimilation}
+\small
+\begin{block}{3. Data-driven Approaches (Machine Learning)}
+\begin{itemize}
+    \item Use sensor data to complement or correct physical models.
+    \item Methods: regression models, neural networks (Neural-ODE), Gaussian Processes.
+    \item Useful in areas with limited or missing physical data.
+\end{itemize}
+\end{block}
+
+\begin{block}{4. Data Assimilation}
+\begin{itemize}
+    \item Continuously adjusts the model parameters using real-time measurements.
+    \item Common methods: EnKF (Ensemble Kalman Filter), 4D-VAR, PBDW/GEIM.
+    \item Keeps the digital twin consistent with the real environment in real time.
+\end{itemize}
+\end{block}
+\end{frame}
+
+
+
+\begin{frame}{Data \& Instrumentation — Data Budget (Urban Microclimate)}
+\tiny
+\setlength{\tabcolsep}{3pt}  
+\textit{Goal: quantify sensor data rates and daily volumes to size network \& storage for real-time operation.}
+
+\vspace{2mm}
+\begin{tabular}{lcccccc}
+\textbf{Sensor} & \textbf{\#} & \textbf{Freq (Hz)} & \textbf{sample} & \textbf{Throughput (kB/s)} & \textbf{Vol/day (GB)} & \textbf{Comments} \\
+\hline
+Air thermometer (T)   & 20 & 1.00  & 8        & 0.16  & 0.014 & Ambient temperature \\
+Hygrometer (RH)       & 10 & 1.00  & 8        & 0.08  & 0.007 & Relative humidity \\
+Anemometer (3-axis)   & 5  & 1.00  & 12       & 0.06  & 0.005 & Wind speed \& direction \\
+Pyranometer (solar)   & 5  & 0.20  & 16       & 0.016 & 0.0014& Global irradiance \\
+Thermal camera*       & 2  & 0.033 & 500{,}000& 33.0  & 2.85  & H.264, store temperature maps \\
+\hline
+\end{tabular}
+
+\vspace{1mm}
+\footnotesize
+\textbf{Formulas:}
+\begin{block}{Throughput (kB/s) \& Volume/day (GB)}
+    $$Throughput (kB/s): \quad = \dfrac{\# \times \text{sample} \times \text{Freq}}{1000}$$
+    $$ \noindent Volume/day (GB): \quad = \dfrac{\text{Throughput (kB/s)} \times 86\,400}{10^{6}}$$
+\end{block}
+\vspace{0.5mm}
+\scriptsize
+\textbf{Protocols/latency (summary):} LoRaWAN for low-rate sensors (2–5 s latency); Wi-Fi/4G for cameras ($<0.5$ s).  \\
+\textbf{Privacy:} camera streams anonymized on edge; only thermal maps stored.
+\end{frame}
+
+
+\begin{frame}{V\&V \& UQ — Verification, Validation \& Uncertainty Quantification}
+\centering
+\tiny
+\begin{block}{Goal}
+    \textit{Goal: ensure accuracy, reliability, and safety of decisions in the urban microclimate digital twin.}
+\end{block}
+\vspace{0.4cm}
+\begin{tabular}{|p{2.5cm}|p{3.5cm}|p{4.2cm}|}
+\hline
+\textbf{Step} & \textbf{Purpose} & \textbf{Methods / Indicators} \\
+\hline
+\textbf{1️⃣ Verification} &
+Check model implementation and numerical stability. &
+Compare the Reduced Order Model (ROM) with the full CFD model.  
+Ensure no numerical or stability errors. \\
+\hline
+\textbf{2️⃣ Validation} &
+Evaluate how well the model matches real-world data. &
+Compare predictions with sensor measurements (T°, wind, humidity).  
+Metrics: \textbf{MAE}, \textbf{RMSE}, \textbf{R\textsuperscript{2}}. \\
+\hline
+\textbf{3️⃣ Uncertainty Quantification (UQ)} &
+Estimate the confidence level of model predictions. &
+Methods: Monte Carlo, sensitivity analysis, Bayesian estimation.  
+Example: $T = 32 \pm 1.5^\circ$C. \\
+\hline
+\textbf{4️⃣ Veto / Alert Mechanism} &
+Prevent wrong or unsafe decisions when uncertainty is too high. &
+If variance or RMSE $>$ threshold → trigger alert or model recalibration. \\
+\hline
+\end{tabular}
+
+\vspace{0.3cm}
+\textit{Outcome: a validated, uncertainty-aware model ensuring trustworthy real-time decisions.}
+\end{frame}
+
+
+\begin{frame}{Transfer \& Deployment — CI/CD, Edge vs Cloud, Observability, Risks}
+\centering
+\tiny
+\begin{block}{Goal}
+    \textit{ensure a smooth transition from R\&D to real-time operation of the urban microclimate digital twin.}
+\end{block}
+\vspace{0.4cm}
+\begin{tabular}{|p{2.5cm}|p{3.5cm}|p{4.2cm}|}
+\hline
+\textbf{Aspect} & \textbf{Description} & \textbf{Tools / Key Points} \\
+\hline
+\textbf{CI/CD (Continuous Integration \& Deployment)} &
+Automate the update cycle for models and data. &
+GitHub Actions, Docker, unit tests for ROM/data, dashboard updates. \\
+\hline
+\textbf{Containers \& Orchestration} &
+Ensure portability and scalability of digital twin services. &
+Docker / Kubernetes: deployment of ROM model, APIs, dashboards. \\
+\hline
+\textbf{Edge vs Cloud Computing} &
+Balance local computing (edge) and centralized storage (cloud). &
+Edge: low latency (cameras, sensors).  
+Cloud: heavy computations (assimilation, ROM training). \\
+\hline
+\textbf{Observability \& Monitoring} &
+Track performance, errors, and model drifts. &
+Logs, metrics, and alerts through Grafana / Prometheus. \\
+\hline
+\textbf{Costs \& Risks (CAPEX/OPEX)} &
+Optimize hardware resources and minimize downtime. &
+CAPEX: servers / sensors.  
+OPEX: maintenance, energy, network.  
+Risk: failure, model drift. \\
+\hline
+\end{tabular}
+
+\vspace{0.3cm}
+\textit{Outcome: a reliable, automated, and maintainable digital twin for long-term operation.}
+\end{frame}
+
+
+\begin{frame}{Perspectives \& Limitations — Toward a Sustainable Digital Twin}
+
+\vspace{3mm}
+\begin{itemize}
+    \item 🔹 \textbf{Scalability:} adapt the model to larger urban areas (optimized ROM, cloud computation).  
+    \item 🔹 \textbf{Robustness:} handle sensor failures or noisy data (redundancy, adaptive models).  
+    \item 🔹 \textbf{Bias:} avoid overfitting to one district (multi-scenario validation).  
+    \item 🔹 \textbf{Privacy:} ensure GDPR compliance and anonymization of visual data.  
+    \item 🔹 \textbf{Ethics:} promote transparency, explainable AI, and citizen involvement.  
+\end{itemize}
+
+\end{frame}
+
+
+% --- Slide: Acknowledgment / Questions ---
+\begin{frame}{Thank You / Questions}
+\centering
+\Huge \textbf{Thank you for your attention!} \\
+\vspace{1cm}
+\Large Any questions? \\
+\vspace{0.5cm}
+\textit{University of Strasbourg – 2025}
+\end{frame}
 
 
 
