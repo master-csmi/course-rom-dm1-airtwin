@@ -1,6 +1,7 @@
 \documentclass{beamer}
 \usetheme{Copenhagen}
 \usepackage{graphicx}
+\usepackage{tikz}
 % \usepackage[ruled,vlined,english]{algorithm2e}
 % \renewcommand{\thealgocf}{}
 % \usepackage{hyperref}
@@ -60,42 +61,100 @@
 
 
 \begin{frame}{Méthodes}
+    \small
     %Modélisation de phénomènes physiques
-    \textbf{Physique $\rightarrow$ numérique:}  \\
-    Données (météo, propriétés des matériaux, composition de l'air) $\rightarrow$ paramètres \hspace{1cm}  Zone d'étude $\rightarrow$ Maquette 3D maillée % pour résoudre numériquement par FEM, VM, DM
+    % pour résoudre numériquement par FEM, VM, DM
+    \begin{columns}[T]
+        \begin{column}{0.45\textwidth}
+            \textbf{Physique:} \\
+            \begin{itemize}
+                \item Données (météo, propriétés des matériaux, composition de l'air)
+                \item Micro-climat
+            \end{itemize}
+        \end{column}
+        \begin{column}{0.1\textwidth}
+            \begin{center}
+                \tikz[scale=1]{\draw[->, very thick] (0,0) -- (0.5,0);}
+            \end{center}
+        \end{column}
+        \begin{column}{0.45\textwidth}
+            \textbf{Numérique:}
+            \begin{itemize}
+                \item Paramètres
+                \item Maquette 3D maillée
+            \end{itemize}
+            \vspace{0.3cm}
+            \includegraphics[width=0.7\textwidth]{images/micro-climat_scheme.png} \\
+        \end{column}
+    \end{columns}
+
+    \vspace{-0.4cm}
     \textbf{Modèles physiques:}
     \begin{itemize}
-        \item Phénomènes physiques continus (exemple): PDEs (Navier-Stockes, chaleur, transport, diffusion)
+        \item Phénomènes physiques continus: PDEs (Navier-Stockes, chaleur, transport, diffusion)
         \item Interaction entre batiments, vent, végétation: Fluid-Structure Interaction (NS + Elasticity)
         \item Ecoulement d'air et échanges thermiques: Computational Fluid Dynamics (NS + Heat; Transport; transfert radiatif) % effet du soleil sur les façades
     \end{itemize}
+\end{frame}
 
+
+\begin{frame}
+    \small
     % résolution très lourde et longue à calculer, donc:
-    \textbf{Utilisation ROM:} Réduction de l'ordre des modèles physiques pour accélérer les simulations 
-    \textbf{Offline:} Préparation du modèle
+    \textbf{Utilisation ROM:} Réduction de l'ordre des modèles physiques pour accélérer les simulations  \\
+    \vspace{0.2cm}
+    - \textbf{Offline:} Préparation du modèle
     \begin{itemize}
         \item Réduction de la dimension en capturant l'essentiel du système: Proper Orthogonal Decomposition (POD), Reduced Basis Method (RBM)
-        \item Hyper-réduction: Réduit temps de calcul des termes non-linéaires (DEIM, gappy POD) % en évaluant seulement certains points clés du modèle
-                                                        % DEIM: Discrete Empirical Interpolation Method; gappy POD: gappy Proper Orthogonal Decomposition
+        \item Hyper-réduction: Réduit temps de calcul des termes non-linéaires (DEIM: Discrete Empirical Interpolation Method, gappy POD: gappy Proper Orthogonal Decomposition) % en évaluant seulement certains points clés du modèle
     \end{itemize}
-    \textbf{Online:} Simulation du modèle réduit pour tester différents scénarios rapidement
+    \vspace{0.2cm}
+    - \textbf{Online:} Simulation du modèle réduit pour tester différents scénarios rapidement
+    \vspace{-0.4cm}
+    \begin{flushright}
+        \includegraphics[width=0.5\textwidth]{images/diff_scénarios.jpg}
+    \end{flushright}
+\end{frame}
 
+
+\begin{frame}
+    \small
     \textbf{Data-Driven Models:} basé sur les données, prédiction rapide % sur le micro-climat
     \begin{itemize}
         \item Régression: prédit des phénomènes (température, qualité de l'air, vent) à partir de variables (matériaux, végétation...) 
         \item Gaussian Process: prédit et donne l'incertitude pour des zones avec peu de données
-        \item Réseaux de Neuronnes: capture les relations complexes et non-linéaires entre les variables 
-        \item Modèles d'ensembles: amélioration de la précision et de la robustesse des prédictions, en combinant plusieurs modèles
     \end{itemize}
+    \vspace{-0.3cm}
+    \begin{columns}[T]
+    \begin{column}{0.6\textwidth}
+    \begin{itemize}
+        \setlength\itemindent{0.3cm}
+        \item Réseaux de Neuronnes: capture les relations complexes et non-linéaires entre les variables 
+    \end{itemize}
+    \end{column}
 
+    \begin{column}{0.4\textwidth}
+        \vspace{-0.3cm}
+        \includegraphics[width=1\textwidth]{images/NN-env.jpg}
+    \end{column}
+    \end{columns}
+    \vspace{-0.3cm}
+    \begin{itemize}
+        \item Modèles d'ensembles: amélioration de \\ la précision et de la robustesse des prédictions, en combinant plusieurs modèles
+    \end{itemize}
+\end{frame}
+
+
+\begin{frame}
+    \small
     \textbf{Data assimilation:} Combinaison des modèles physiques et des données pour corriger les simulations, obtenir un maximum de précision et rendre ces simulations exploitables % pour la prise de décision
+    \vspace{0.2cm}
     \begin{itemize}
         \item VAR: ajuste le modèle physique pour que les simulations collent aux observations (sur un ou plusieurs pas de temps)
         \item Filtre de Kalman: Mise à jour des prédictions en temps réel pour un suivi dynamique
         \item PBDW, GEIM: reconstruction du système avec peu de données, pour une vue d'ensemble
         \item Capteurs virtuels: estimation de variables où il n'y a pas de mesures, voir l'effet de nouveaux aménagements
     \end{itemize}
-
 \end{frame}
 
 
