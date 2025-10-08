@@ -66,7 +66,7 @@
 
     \vspace{0.2cm}
 
-    \begin{itemize} % plus développer ?
+    \begin{itemize}
         \item Local authorities must therefore make decisions on the development strategies to be adopted and evaluate their environmental and health impact.
     \end{itemize}
     $\rightarrow$ Simulate and predict the effects of these choices on the urban microclimate and public health $\Rightarrow $ \textbf{Digital twin}
@@ -151,7 +151,7 @@
 
 \begin{frame}
     \small
-    \textbf{Data-Driven Models:} data-driven, rapid prediction % sur le micro-climat
+    \textbf{Data-Driven Models:} data-driven, fast prediction % sur le micro-climat
     \begin{itemize}
         \item Regression: predicts phenomena (temperature, air quality, wind) from variables (materials, vegetation...)
         \item Gaussian Process: predicts and provides uncertainty for areas with little data
@@ -182,68 +182,14 @@
     \textbf{Data assimilation:} Combining physical models and data to correct simulations, achieve maximum accuracy, and make these simulations usable % pour la prise de décision
     \vspace{0.2cm}
     \begin{itemize}
-        \item VAR: adjusts the physical model so that simulations match observations (over one or more time steps)
+        \item Vector Auto-Regression (VAR): adjusts the physical model so that simulations match observations (over one or more time steps)
         \item Kalman Filter: Updates predictions in real-time for dynamic tracking
-        \item PBDW, GEIM: reconstructs the system with little data, for an overview
+        \item Parameterized-Background Data-Weak (PBDW), Generalized Empirical Interpolation Method (GEIM): reconstructs the system with little data, for an overview
         \item Virtual sensors: estimation of variables where there are no measurements, see the effect of new developments
     \end{itemize}
 \end{frame}
 
-\begin{frame}{Architecture and Pipeline}
-\begin{columns}
-    \begin{column}{0.55\textwidth}
-        \includegraphics[width=\linewidth]{images/architecture_of_digital_twin.png}
-    \end{column}
-    \begin{column}{0.45\textwidth}
-        \small
-        The digital twin architecture is divided into two main phases:\\[4pt]
-        \textbf{Offline:} model construction, calibration, and reduction.\\[3pt]
-        \textbf{Online:} real-time assimilation and decision support.\\[4pt]
-        This structure ensures continuous synchronization between the physical and virtual environments.
-    \end{column}
-\end{columns}
-\end{frame}
 
-
-
-\begin{frame}{Methods – Part 1: Physical and Reduced Models}
-\small
-\begin{block}{1. Physical and Numerical Modeling}
-\begin{itemize}
-    \item Based on fundamental equations (CFD, thermal transfer, radiation).
-    \item Represents airflow, heat diffusion, and the effect of urban materials.
-    \item Provides detailed simulations but is computationally expensive.
-\end{itemize}
-\end{block}
-
-\begin{block}{2. Reduced Order Model (ROM / Surrogate Model)}
-\begin{itemize}
-    \item Built from the results of the high-fidelity physical model.
-    \item Techniques: POD (Proper Orthogonal Decomposition), Reduced Basis Method (RBM), Hyper-reduction (DEIM).
-    \item Enables calculations 100 to 1000 times faster while preserving accuracy.
-\end{itemize}
-\end{block}
-\end{frame}
-
-
-\begin{frame}{Methods – Part 2: Data-driven and Data Assimilation}
-\small
-\begin{block}{3. Data-driven Approaches (Machine Learning)}
-\begin{itemize}
-    \item Use sensor data to complement or correct physical models.
-    \item Methods: regression models, neural networks (Neural-ODE), Gaussian Processes.
-    \item Useful in areas with limited or missing physical data.
-\end{itemize}
-\end{block}
-
-\begin{block}{4. Data Assimilation}
-\begin{itemize}
-    \item Continuously adjusts the model parameters using real-time measurements.
-    \item Common methods: EnKF (Ensemble Kalman Filter), 4D-VAR, PBDW/GEIM.
-    \item Keeps the digital twin consistent with the real environment in real time.
-\end{itemize}
-\end{block}
-\end{frame}
 
 
 
@@ -379,17 +325,6 @@ Risk: failure, model drift. \\
 \vspace{0.5cm}
 \textit{University of Strasbourg – 2025}
 \end{frame}
-
-
-
-
-%\begin{frame}{Bibliographie}
-    % https://www.ign.fr/institut/un-jumeau-numerique-de-la-france-pour-piloter-la-transition-ecologique
-    % https://cnig.gouv.fr/IMG/pdf/2025.01_20_jnft_presentation_cnig_pole_territoires.pdf
-    % Fondateurs de la démarche: IGN, Cerema, Inria
-    % slide 10 -> 30% pour les aménagements durables
-    % https://www.sciencedirect.com/science/article/pii/S2212095525002469
-%\end{frame}
 
 
 
