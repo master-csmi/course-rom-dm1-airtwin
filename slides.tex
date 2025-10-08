@@ -37,7 +37,8 @@
         \item Data \& Instrumentation — Data Budget (Urban Microclimate)
         \item V\&V \& UQ — Verification, Validation \& Uncertainty Quantification
         \item Transfer \& Deployment — CI/CD, Edge vs Cloud, Observability, Risks
-        \item Perspectives \& Limitations — Toward a Sustainable Digital Twin
+        \item Perspectives
+        \item Limitations
     \end{enumerate}
 \end{frame}
 
@@ -219,7 +220,7 @@ Thermal camera*       & 2  & 0.033 & 500{,}000& 33.0  & 2.85  & H.264, store tem
 \end{block}
 \vspace{0.5mm}
 \scriptsize
-\textbf{Protocols/latency (summary):} LoRaWAN for low-rate sensors (2–5 s latency); Wi-Fi/4G for cameras ($<0.5$ s).  \\
+\textbf{Protocols/latency:} LoRaWAN for low-rate sensors (2–5 s latency); Wi-Fi/4G for cameras ($<0.5$ s).  \\
 \textbf{Privacy:} camera streams anonymized on edge; only thermal maps stored.
 \end{frame}
 
@@ -252,7 +253,7 @@ Example: $T = 32 \pm 1.5^\circ$C. \\
 \hline
 \textbf{4️ Veto / Alert Mechanism} &
 Prevent wrong or unsafe decisions when uncertainty is too high. &
-If variance or RMSE $>$ threshold → trigger alert or model recalibration. \\
+If confidence interval $>$ threshold → trigger alert or model recalibration. \\
 \hline
 \end{tabular}
 
@@ -302,17 +303,27 @@ Risk: failure, model drift. \\
 \end{frame}
 
 
-\begin{frame}{Perspectives \& Limitations — Toward a Sustainable Digital Twin}
-
-\vspace{3mm}
+\begin{frame}{Perspectives — Toward a Sustainable Digital Twin}
+\small
 \begin{itemize}
-    \item - \textbf{Scalability:} adapt the model to larger urban areas (optimized ROM, cloud computation).  
-    \item - \textbf{Robustness:} handle sensor failures or noisy data (redundancy, adaptive models).  
-    \item - \textbf{Bias:} avoid overfitting to one district (multi-scenario validation).  
-    \item - \textbf{Privacy:} ensure GDPR compliance and anonymization of visual data.  
-    \item - \textbf{Ethics:} promote transparency, explainable AI, and citizen involvement.  
+    \item \textbf{Scalability:} extend the model to larger urban areas using cloud computing and ROM optimization.  
+    \item \textbf{Continuous improvement:} integrate new sensors (CO₂, fine particles) and additional data sources (satellite, weather).  
+    \item \textbf{Optimization:} further automate calibration and data assimilation for faster model updates.  
 \end{itemize}
+\vspace{3mm}
+\textit{Goal: make the digital twin more complete, faster, and more useful for urban decision-making.}
+\end{frame}
 
+
+\begin{frame}{Limitations and Current Challenges}
+\small
+\begin{itemize}
+    \item \textbf{Robustness:} sensors may fail or produce noisy data so adaptive models are needed.  
+    \item \textbf{Bias:} the model can overfit to one district which means multi-scenario validation is required. 
+    \item \textbf{Costs:} find the right balance between accuracy, speed, and budget (cloud, maintenance).  
+\end{itemize}
+\vspace{3mm}
+\textit{These challenges highlight what must be improved to make the digital twin reliable and sustainable in the long term.}
 \end{frame}
 
 
