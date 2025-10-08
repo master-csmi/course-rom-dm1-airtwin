@@ -3,7 +3,7 @@
 
 ## 👥 Team
 - **Hanna CHETOUANE**  
-- **Narmimane ZAOuACHE**  
+- **Narmimane ZAOUACHE**  
 UFR of Mathematics & Informatics — University of Strasbourg  
 
 
@@ -53,14 +53,14 @@ The goal is to design and present a digital twin that combines physical modeling
 latexmk -pdf slides.tex
 
 ```
+---
 
 
 
 
+---
 
-
-This project was developed with the help of an artificial intelligence tool.
-
+This project was developed with the help of artificial intelligence (ChatGPT) for the reformulation of certain passages, translation of scientific terms, and addition of technical information. The entire text was then verified and adapted.
 
 
 
