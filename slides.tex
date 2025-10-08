@@ -8,8 +8,8 @@
 \usepackage{newunicodechar}
 \newunicodechar{️}{}
 
-\author[Jumeau numérique: Environnement]{\large Hanna CHETOUANE, Narmimane ZAOUACHE \\ \vspace{-0.8cm} \date{\today}}
-\title[Microclimat urbain]{\textbf{Jumeau numérique dans l'environnement:} \\ Microclimat urbain}
+\author[Digital twin in the Environment]{\large Hanna CHETOUANE, Narmimane ZAOUACHE \\ \vspace{-0.8cm} \date{\today}}
+\title[Urban mocroclimate]{\textbf{Digital twin in the Environment:} \\ Urban microclimate}
 
 
 
@@ -17,11 +17,11 @@
 
 \begin{frame}
     \titlepage
-    \vspace{-0.4cm}
+    \vspace{-0.7cm}
     \begin{center}
         UFR of Mathematics and Informatics - University of Strasbourg 
-        \\[0.2cm] 
-        \textit{Comment les jumeaux numériques aident-ils à comprendre les effets des aménagements urbains sur le micro-climat ?}
+        \\[0.6cm] 
+        \textit{How do digital twins help us understand the effects of urban development on the microclimate?}
     \end{center}
 \end{frame} 
 
@@ -31,46 +31,66 @@
 \end{frame}
 
 
-\begin{frame}{Contexte}
+\begin{frame}{Context}
     \small
+    % \vspace{-1cm}
+    % \begin{flushright}
+    %     \includegraphics[width=0.4\textwidth]{images/ilot_de_chaleur.jpg}
+    % \end{flushright}
+    
+    \begin{columns}[T]
+    \begin{column}{0.6\textwidth}
+    \begin{itemize}
+        \setlength\itemindent{0.3cm}
+        \item Ecology and climate have become major issues, especially in cities where heat islands are developing
+        \item Solutions: Greening, choice of suitable materials, and redesigned urban planning
+        \end{itemize}
+    \end{column}
+
+    \begin{column}{0.4\textwidth}
+        \vspace{-0.3cm}
+        \includegraphics[width=1\textwidth]{images/ilot_de_chaleur.jpg}
+    \end{column}
+    \end{columns}
+
+    \vspace{0.2cm}
+
     \begin{itemize} % plus développer ?
-        \item L'écologie et le climat sont devenus des enjeux majeurs, surtout dans les villes où se développent des îlots de chaleur
-        \item Solutions: Végétalisation, choix de matériaux adaptés et aménagements urbains repensés
-        \item Les collectiviités locales doivent ainsi prendre des décisions sur les stratégies d'aménagement à adopter et en évaluer l'impact environnemental et sanitaire
+        \item Local authorities must therefore make decisions on the development strategies to be adopted and evaluate their environmental and health impact.
     \end{itemize}
-    $\rightarrow$ Simuler et prédire ces effets de ces choix sur le microclimat urbain et la santé publique $\Rightarrow $ \textbf{Jumeau numérique}
+    $\rightarrow$ Simulate and predict the effects of these choices on the urban microclimate and public health $\Rightarrow $ \textbf{Digital twin}
 \end{frame}
 
 
-\begin{frame}{Qu'est-ce qu'un jumeau numérique ?}
+\begin{frame}{What is a digital twin?}
     \small
     \begin{itemize}
-        \item Réplique virtuelle et dynamique d'un système réel, qui, couplé à des outils de simulation, permet d'analyser et prédire son comportement dans différentes conditions
-        \item S'appuie sur des données réelles (météorologiques et urbaines) issues de capteurs, d'observations ou de modèles physiques
+        \item Virtual and dynamic replica of a real system, which, when coupled with simulation tools, allows its behavior to be analyzed and predicted under different conditions
+        \item Based on real data (meteorological and urban) from sensors, observations, or physical models
     \end{itemize}
     \begin{center}
         \includegraphics[width=0.7\textwidth]{images/objectifs_jm.png} \\
     \end{center}
-    Défi actuel en France: projet JNFT porté par l'IGN, le Cerema et l'Inria, qui vise à créer un jumeau numérique multithématique couvrant le territoire français
+    Current challenge in France: JNFT project led by IGN, Cerema, and Inria, which aims to create a multi-thematic digital twin covering the French territory
 \end{frame}
 
 
-\begin{frame}{Fonctionnement d'un jumeau numérique} %Architecture et pipeline}
+\begin{frame}{How a digital twin works} %Architecture et pipeline}
     \hspace*{-0.5cm}
     \includegraphics[width=1.1\textwidth]{images/pipeline.png} \\
 \end{frame}
 
 
-\begin{frame}{Méthodes}
+\begin{frame}{Methods}
     \small
     %Modélisation de phénomènes physiques
     % pour résoudre numériquement par FEM, VM, DM
     \begin{columns}[T]
         \begin{column}{0.45\textwidth}
-            \textbf{Physique:} \\
+            \textbf{Physical:} \\
             \begin{itemize}
-                \item Données (météo, propriétés des matériaux, composition de l'air)
-                \item Micro-climat
+                \item Data (weather, material properties, air composition)
+                \item Microclimate
             \end{itemize}
         \end{column}
         \begin{column}{0.1\textwidth}
@@ -79,10 +99,10 @@
             \end{center}
         \end{column}
         \begin{column}{0.45\textwidth}
-            \textbf{Numérique:}
+            \textbf{Digital:}
             \begin{itemize}
-                \item Paramètres
-                \item Maquette 3D maillée
+                \item Parameters
+                \item 3D mesh model
             \end{itemize}
             \vspace{0.3cm}
             \includegraphics[width=0.7\textwidth]{images/micro-climat_scheme.png} \\
@@ -90,11 +110,11 @@
     \end{columns}
 
     \vspace{-0.4cm}
-    \textbf{Modèles physiques:}
+    \textbf{Physical models:}
     \begin{itemize}
-        \item Phénomènes physiques continus: PDEs (Navier-Stockes, chaleur, transport, diffusion)
-        \item Interaction entre batiments, vent, végétation: Fluid-Structure Interaction (NS + Elasticity)
-        \item Ecoulement d'air et échanges thermiques: Computational Fluid Dynamics (NS + Heat; Transport; transfert radiatif) % effet du soleil sur les façades
+        \item Continuous physical phenomena: PDEs (Navier-Stokes, heat, transport, diffusion)
+        \item Interaction between buildings, wind, vegetation: Fluid-Structure Interaction (NS + Elasticity)
+        \item Airflow and heat exchange: Computational Fluid Dynamics (NS + Heat; Transport; radiative transfer) % effet du soleil sur les façades
     \end{itemize}
 \end{frame}
 
@@ -102,15 +122,15 @@
 \begin{frame}
     \small
     % résolution très lourde et longue à calculer, donc:
-    \textbf{Utilisation ROM:} Réduction de l'ordre des modèles physiques pour accélérer les simulations  \\
+    \textbf{ROM usage:} Reducing the order of physical models to speed up simulations  \\
     \vspace{0.2cm}
-    - \textbf{Offline:} Préparation du modèle
+    - \textbf{Offline:} Model preparation
     \begin{itemize}
-        \item Réduction de la dimension en capturant l'essentiel du système: Proper Orthogonal Decomposition (POD), Reduced Basis Method (RBM)
-        \item Hyper-réduction: Réduit temps de calcul des termes non-linéaires (DEIM: Discrete Empirical Interpolation Method, gappy POD: gappy Proper Orthogonal Decomposition) % en évaluant seulement certains points clés du modèle
+        \item Dimension reduction by capturing the essence of the system: Proper Orthogonal Decomposition (POD), Reduced Basis Method (RBM)
+        \item Hyper-reduction: Reduces computation time of nonlinear terms (DEIM: Discrete Empirical Interpolation Method, gappy POD: gappy Proper Orthogonal Decomposition) % en évaluant seulement certains points clés du modèle
     \end{itemize}
     \vspace{0.2cm}
-    - \textbf{Online:} Simulation du modèle réduit pour tester différents scénarios rapidement
+    - \textbf{Online:} Simulation of the reduced model to quickly test different scenarios
     \vspace{-0.4cm}
     \begin{flushright}
         \includegraphics[width=0.5\textwidth]{images/diff_scénarios.jpg}
@@ -120,18 +140,18 @@
 
 \begin{frame}
     \small
-    \textbf{Data-Driven Models:} basé sur les données, prédiction rapide % sur le micro-climat
+    \textbf{Data-Driven Models:} data-driven, rapid prediction % sur le micro-climat
     \begin{itemize}
-        \item Régression: prédit des phénomènes (température, qualité de l'air, vent) à partir de variables (matériaux, végétation...) 
-        \item Gaussian Process: prédit et donne l'incertitude pour des zones avec peu de données
+        \item Regression: predicts phenomena (temperature, air quality, wind) from variables (materials, vegetation...)
+        \item Gaussian Process: predicts and provides uncertainty for areas with little data
     \end{itemize}
     \vspace{-0.3cm}
     \begin{columns}[T]
     \begin{column}{0.6\textwidth}
     \begin{itemize}
         \setlength\itemindent{0.3cm}
-        \item Réseaux de Neuronnes: capture les relations complexes et non-linéaires entre les variables 
-    \end{itemize}
+        \item Neural Networks: capture complex and non-linear relationships between variables 
+        \end{itemize}
     \end{column}
 
     \begin{column}{0.4\textwidth}
@@ -141,20 +161,20 @@
     \end{columns}
     \vspace{-0.3cm}
     \begin{itemize}
-        \item Modèles d'ensembles: amélioration de \\ la précision et de la robustesse des prédictions, en combinant plusieurs modèles
+        \item Ensemble models: improving prediction \\ accuracy and robustness by combining multiple models
     \end{itemize}
 \end{frame}
 
 
 \begin{frame}
     \small
-    \textbf{Data assimilation:} Combinaison des modèles physiques et des données pour corriger les simulations, obtenir un maximum de précision et rendre ces simulations exploitables % pour la prise de décision
+    \textbf{Data assimilation:} Combining physical models and data to correct simulations, achieve maximum accuracy, and make these simulations usable % pour la prise de décision
     \vspace{0.2cm}
     \begin{itemize}
-        \item VAR: ajuste le modèle physique pour que les simulations collent aux observations (sur un ou plusieurs pas de temps)
-        \item Filtre de Kalman: Mise à jour des prédictions en temps réel pour un suivi dynamique
-        \item PBDW, GEIM: reconstruction du système avec peu de données, pour une vue d'ensemble
-        \item Capteurs virtuels: estimation de variables où il n'y a pas de mesures, voir l'effet de nouveaux aménagements
+        \item VAR: adjusts the physical model so that simulations match observations (over one or more time steps)
+        \item Kalman Filter: Updates predictions in real-time for dynamic tracking
+        \item PBDW, GEIM: reconstructs the system with little data, for an overview
+        \item Virtual sensors: estimation of variables where there are no measurements, see the effect of new developments
     \end{itemize}
 \end{frame}
 
