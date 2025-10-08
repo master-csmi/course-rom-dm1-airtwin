@@ -5,7 +5,6 @@
 % \usepackage[ruled,vlined,english]{algorithm2e}
 % \renewcommand{\thealgocf}{}
 % \usepackage{hyperref}
-
 \usepackage{newunicodechar}
 \newunicodechar{️}{}
 
@@ -259,22 +258,22 @@ Thermal camera*       & 2  & 0.033 & 500{,}000& 33.0  & 2.85  & H.264, store tem
 \hline
 \textbf{Step} & \textbf{Purpose} & \textbf{Methods / Indicators} \\
 \hline
-\textbf{1️⃣ Verification} &
+\textbf{1️ Verification} &
 Check model implementation and numerical stability. &
 Compare the Reduced Order Model (ROM) with the full CFD model.  
 Ensure no numerical or stability errors. \\
 \hline
-\textbf{2️⃣ Validation} &
+\textbf{2️ Validation} &
 Evaluate how well the model matches real-world data. &
 Compare predictions with sensor measurements (T°, wind, humidity).  
 Metrics: \textbf{MAE}, \textbf{RMSE}, \textbf{R\textsuperscript{2}}. \\
 \hline
-\textbf{3️⃣ Uncertainty Quantification (UQ)} &
+\textbf{3️ Uncertainty Quantification (UQ)} &
 Estimate the confidence level of model predictions. &
 Methods: Monte Carlo, sensitivity analysis, Bayesian estimation.  
 Example: $T = 32 \pm 1.5^\circ$C. \\
 \hline
-\textbf{4️⃣ Veto / Alert Mechanism} &
+\textbf{4️ Veto / Alert Mechanism} &
 Prevent wrong or unsafe decisions when uncertainty is too high. &
 If variance or RMSE $>$ threshold → trigger alert or model recalibration. \\
 \hline
@@ -330,11 +329,11 @@ Risk: failure, model drift. \\
 
 \vspace{3mm}
 \begin{itemize}
-    \item 🔹 \textbf{Scalability:} adapt the model to larger urban areas (optimized ROM, cloud computation).  
-    \item 🔹 \textbf{Robustness:} handle sensor failures or noisy data (redundancy, adaptive models).  
-    \item 🔹 \textbf{Bias:} avoid overfitting to one district (multi-scenario validation).  
-    \item 🔹 \textbf{Privacy:} ensure GDPR compliance and anonymization of visual data.  
-    \item 🔹 \textbf{Ethics:} promote transparency, explainable AI, and citizen involvement.  
+    \item - \textbf{Scalability:} adapt the model to larger urban areas (optimized ROM, cloud computation).  
+    \item - \textbf{Robustness:} handle sensor failures or noisy data (redundancy, adaptive models).  
+    \item - \textbf{Bias:} avoid overfitting to one district (multi-scenario validation).  
+    \item - \textbf{Privacy:} ensure GDPR compliance and anonymization of visual data.  
+    \item - \textbf{Ethics:} promote transparency, explainable AI, and citizen involvement.  
 \end{itemize}
 
 \end{frame}
