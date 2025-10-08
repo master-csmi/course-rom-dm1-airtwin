@@ -50,7 +50,6 @@ The goal is to design and present a digital twin that combines physical modeling
 
 ### Option 1 – Using `latexmk` (recommended)
 ```bash
-cd slides
 latexmk -pdf slides.tex
 
 ```
