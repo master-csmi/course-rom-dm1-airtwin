@@ -19,6 +19,17 @@ The goal is to design and present a digital twin that combines physical modeling
 
 
 
+---
+
+## ⚙️ How to Compile the Slides (PDF)
+
+### Option 1 – Using `latexmk` (recommended)
+```bash
+cd slides
+latexmk -pdf main.tex
+# To clean temporary files:
+latexmk -c
+
 
 
 
