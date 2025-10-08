@@ -26,7 +26,7 @@ The goal is to design and present a digital twin that combines physical modeling
 ### Option 1 – Using `latexmk` (recommended)
 ```bash
 cd slides
-latexmk -pdf main.tex
+latexmk -pdf slides.tex
 # To clean temporary files:
 latexmk -c
 
