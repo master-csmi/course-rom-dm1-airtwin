@@ -53,6 +53,8 @@ The goal is to design and present a digital twin that combines physical modeling
 cd slides
 latexmk -pdf slides.tex
 
+```
+
 
 
 
