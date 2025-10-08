@@ -17,6 +17,31 @@ The goal is to design and present a digital twin that combines physical modeling
 
 ---
 
+---
+
+## 🧩 Slide Content Overview
+1. **Title & Team**  
+2. **Problem & Context / KPIs**  
+3. **Objectives of the Digital Twin**  
+4. **Architecture & Pipeline**  
+ - Sensors → Ingestion → Storage → Pre-processing →  
+   Data Assimilation/Calibration → ROM/Surrogate →  
+   Real-time Service → Dashboard  
+5. **Methods**  
+ - Physical/CFD models  
+ - Reduced Order Modeling (POD, RBM, DEIM)  
+ - Data-driven (regressions, Neural-ODE, GPs)  
+ - Data Assimilation (EnKF, VAR, PBDW, GEIM)  
+6. **Data & Instrumentation**  
+ - Sensor table (frequency, size, data rate, volume, privacy)  
+7. **V&V & UQ**  
+ - Verification, Validation, Uncertainty Quantification, veto mechanism  
+8. **Transfer & Deployment**  
+ - CI/CD, containers, edge vs cloud, observability, costs & risks  
+9. **Perspectives & Limitations**  
+10. **Bibliography (5–10 references)**  
+
+---
 
 
 ---
@@ -27,9 +52,13 @@ The goal is to design and present a digital twin that combines physical modeling
 ```bash
 cd slides
 latexmk -pdf slides.tex
-# To clean temporary files:
-latexmk -c
 
+
+
+
+
+
+This project was developed with the help of an artificial intelligence tool (ChatGPT).
 
 
 
