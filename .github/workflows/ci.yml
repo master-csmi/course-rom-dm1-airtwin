@@ -19,5 +19,4 @@ jobs:
 
     - name: Compile LaTeX slides
       run: |
-      pdflatex slides.tex
         pdflatex slides.tex
