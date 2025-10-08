@@ -59,7 +59,7 @@ latexmk -pdf slides.tex
 
 
 
-This project was developed with the help of an artificial intelligence tool (ChatGPT).
+This project was developed with the help of an artificial intelligence tool.
 
 
 
