@@ -1,0 +1,30 @@
+name: Build Slides
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+  workflow_dispatch:
+
+jobs:
+  build:
+    name: Build
+    runs-on: self-texlive
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Compile LaTeX slides
+        run: |
+          pdflatex -interaction=nonstopmode -halt-on-error slides.tex
+          bibtex slides || true
+          pdflatex -interaction=nonstopmode -halt-on-error slides.tex
+          pdflatex -interaction=nonstopmode -halt-on-error slides.tex
+
+      - name: Upload PDF artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: slides-pdf
+          path: slides.pdf
